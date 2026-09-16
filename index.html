@@ -57,6 +57,16 @@ nav.top a{
   transition:color .2s,border-color .2s;
 }
 nav.top a:hover,nav.top a:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}
+@media(max-width:620px){
+  nav.top .inner{
+    flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
+    padding:12px 20px;scrollbar-width:none;
+  }
+  nav.top .inner::-webkit-scrollbar{display:none}
+  nav.top a{white-space:nowrap}
+  .wrap{padding:0 20px 72px}
+  header.hero{padding-top:44px}
+}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* ---- Typo-Bausteine ---- */
@@ -87,13 +97,15 @@ header.hero .eyebrow{
 }
 header.hero h1 .sub{display:block;font-size:.42em;letter-spacing:.24em;color:var(--muted);margin-top:16px}
 .facts{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:0;
-  margin-top:40px;border-top:1px solid var(--hairline);
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+  margin-top:40px;background:var(--hairline);
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
 }
-.facts div{
-  flex:1 1 118px;padding:18px 10px;border-right:1px solid var(--hairline);
+.facts div{background:var(--ground);padding:18px 10px}
+@media(max-width:620px){
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .facts div:last-child{grid-column:1/-1}
 }
-.facts div:last-child{border-right:0}
 .facts dt{
   font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
   font-weight:500;margin-bottom:5px;
@@ -221,6 +233,8 @@ footer .script{font-size:2.4rem;margin-bottom:10px}
   ol.drills li{padding:14px 0}
   ol.drills ul li{font-size:9.8pt}
   footer{margin-top:34px}
+  .facts{grid-template-columns:repeat(5,1fr)}
+  .facts div:last-child{grid-column:auto}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
